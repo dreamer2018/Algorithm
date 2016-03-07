@@ -28,11 +28,11 @@ def Sort(list,start_1,end_1,start_2,end_2):
             temp[k]=list[j]
             j+=1
         k+=1
-    while(i<= end_1):
+    while(i < end_1):
         temp[k]=list[i]
         i+=1
         k+=1
-    while(j <= end_2):
+    while(j < end_2):
         temp[k]=list[j]
         j+=1
         k+=1
