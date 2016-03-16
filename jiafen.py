@@ -6,7 +6,7 @@
 # Blog: blog.csdn.net/it_dream_er
 # Function:
 # Created Time: 2016年03月16日 星期三 08时52分35秒
-S=[1,1,2,2,3,5,5]
+S=[1,1,2,2,3,5,5,666,666,666,666]
 max=[]
 weight=[]
 #max.append(S[0])
@@ -33,8 +33,8 @@ def Index(weight,max_weight,max):
     return rtu
 def Print(res,max_weight):
     for i in range(0,len(res),1):
-        print res[i],
-    print 
+        print(res[i],end=" ")
+    print()
     print(max_weight)
 max,weight=Count(S)
 max_weight=Max(weight)
