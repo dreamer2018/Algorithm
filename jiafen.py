@@ -4,7 +4,7 @@
 # Author: ZhouPan / github:dreamer2018 
 # Mail: zhoupans_mail@163.com
 # Blog: blog.csdn.net/it_dream_er
-# Function:
+# Function:找出众数并打印
 # Created Time: 2016年03月16日 星期三 08时52分35秒
 S=[1,1,2,2,3,5,5,666,666,666,666]
 max=[]
