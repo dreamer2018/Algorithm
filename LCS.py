@@ -1,5 +1,7 @@
 #/usr/bin/env python
 #coding=utf-8
+#function:最长公共子序列
+
 __author__='zhoupan'
 
 def LCSLength(m,n,x,y):
@@ -12,6 +14,7 @@ def LCSLength(m,n,x,y):
         for j in range(0,n+1):
             c[i].append(0)
             b[i].append(0)
+
     for i in range(1,m+1):
         for j in range(1,n+1):
             if(x[i-1] == y[j-1]):
@@ -37,7 +40,7 @@ def LCS(i,j,x,b):
         LCS(i,j-1,x,b)
 
 if __name__ == '__main__':
-    x = 'aboutaa'
-    y = 'staticaa'
+    x = 'about'
+    y = 'static'
     c,b = LCSLength(len(x),len(y),x,y)
     LCS(len(x),len(y),x,b)
