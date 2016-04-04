@@ -29,4 +29,4 @@ def  MatrixChain(n,p):
     return m,s
 
 if __name__ == '__main__':
-    MatrixChain(5,[30,35,15,5,10,20,25])
+    MatrixChain(5,30,35,15,5,10,20,25)
