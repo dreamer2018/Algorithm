@@ -1,5 +1,6 @@
 #/usr/bin/env python
 #coding=utf-8
+#function:矩阵连乘
 __author__='zhoupan'
 def  MatrixChain(n,p):
     m=[]
