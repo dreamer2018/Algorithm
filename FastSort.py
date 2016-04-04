@@ -23,4 +23,4 @@ def FastSort(list,start,end):
 if __name__ == '__main__':
     list=[5,8,3,6,4,2]
     FastSort(list,0,len(list)-1)
-    print list
+    print(list)
