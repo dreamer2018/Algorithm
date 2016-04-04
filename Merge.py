@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8
+#function:归并排序，自然分组
 __author__ = 'zhoupan'
 def MergeSort(list,start,end):
     #如果列表里只有一个数据，则直接返回
@@ -52,4 +53,4 @@ def Sort(list,start_1,end_1,start_2,end_2):
 if __name__ == '__main__':
     list=[2,8,3,6,9,10,4,2,1,2,24,7,32,8,0]
     MergeSort(list,0,len(list)-1)
-    print list
+    print(list)
