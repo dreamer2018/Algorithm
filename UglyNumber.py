@@ -14,7 +14,6 @@ class Solution:
             if(j%i !=0 ):
                 return j
             j = j//i
-            print(i,"->",j)
         return 0
     def isUgly(self,num):
         # Write your code here
