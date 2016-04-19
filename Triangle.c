@@ -19,14 +19,6 @@ void main()
             scanf("%d",&triangle[i][j]);
         }
     }
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<=i;j++)
-        {
-            printf("%d ",triangle[i][j]);
-        }
-        printf("\n");
-    }
     for(i=n-2;i>=0;i--)
     {
         for(j=0;j<=i;j++)
