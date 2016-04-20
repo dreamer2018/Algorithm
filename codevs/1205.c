@@ -3,7 +3,7 @@
 	> Author: ZhouPan / github: dreamer2018 
 	> Mail: zhoupans_mail@163.com
 	> Created Time: Wed 20 Apr 2016 04:12:07 PM CST
-  > Function:
+  > Function:单词颠倒
  ************************************************************************/
 
 #include<stdio.h>
