@@ -1,9 +1,9 @@
 /*************************************************************************
 	> File Name: meet.c
-	> Author: ZhouPan / github: dreamer2018 
+	> Author: ZhouPan / github: dreamer2018
 	> Mail: zhoupans_mail@163.com
 	> Created Time: Wed 27 Apr 2016 09:02:26 AM CST
-  > Function:
+    > Function: 会场安排问题
  ************************************************************************/
 
 #include<stdio.h>
@@ -18,6 +18,7 @@ int Sort(struct meet *a,int start,int end)
     int i=start;
     int j=end;
     int k=a[start].var;
+    int h=a[start].sign;
     while(i<j)
     {
         while(i<j && a[j].var>=k)
@@ -25,12 +26,15 @@ int Sort(struct meet *a,int start,int end)
             j--;
         }
         a[i].var=a[j].var;
-        while(i< j && a[i].var<k)
+        a[i].sign=a[j].sign;
+        while( i< j && a[i].var<k)
         {
             i++;
         }
         a[j].var=a[i].var;
+        a[j].sign = a[i].sign;
         a[i].var=k;
+        a[i].sign=h;
     }
     return i;
 }
@@ -47,21 +51,33 @@ int FastSort(struct meet *a,int start,int end)
 int main()
 {
     int i,j,n;
+    int temp,max;
     scanf("%d",&n);
     struct meet *p;
     p=(struct meet *)malloc(n*sizeof(struct meet));
-    for(i=0;i<n*2;i++)
+    for(i=0;i<n*2;i+=2)
     {
-        scanf("%d",&p[i].var);
+        scanf("%d %d",&p[i].var,&p[i+1].var);
         p[i].sign=i%2;
+        p[i+1].sign=(i+1)%2;
     }
     FastSort(p,0,2*n-1);
-    for(i=0;i<n*2;i++)
-    {
-        printf("%d\t%d\n",p[i].var,p[i].sign);
-    }
-    int temp,max;
     temp=max=0;
-    for(i=0;i<)
+    for(i=0;i<2*n;i++)
+    {
+        if(temp > max)
+        {
+            max=temp;
+        }
+        if(p[i].sign==0)
+        {
+            temp++;
+        }
+        else
+        {
+            temp--;
+        }
+    }
+    printf("%d\n",max);
     return 0;
 }
