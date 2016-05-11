@@ -8,12 +8,11 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-struct max{
-    int number;
-    int sign;
-};
+#include<math.h>
+
 
 //从一个数字中得到每一位，并存入number中
+
 int getSize(int num)
 {
     int i=0;
@@ -33,6 +32,20 @@ void getNumber(int * number,int num,int size)
         num/=10;
     }
 }
+
+int delMember(int *number,int size,int index)
+{
+    if(number == NULL)
+    {
+        return 0;
+    }
+    int i;
+    for(i=index;i<size ;i++)
+    {
+        number[i]=number[i+1];
+    }
+    return size-1;
+}
 int getResult(int *number,int dele,int size,int num)
 {
     if(dele > size)
@@ -47,30 +60,26 @@ int getResult(int *number,int dele,int size,int num)
     {
         return num;
     }
-    int i,j;
-    struct max *m=(struct max*)malloc((size-dele)*sizeof(struct max));
-
-    for(i=0;i<size-dele;i++)
+    int i,j,temp=size,sign;
+    for(i=0;i<dele;i++)
     {
-        if(i==0)
+        sign=0;
+        //找出非递增的，排除前面删除的
+        for(j=0;j<temp;j++)
         {
-            m[i].number=number[0];
-            m[i].sign=0;
-        }
-        else
-        {
-            m[i].sign=m[i-1].sign+1;
-            m[i].number=number[m[i-1].sign+1];
-        }
-        for(j=m[i].sign;j<=dele+i;j++)
-        {
-            if(m[i].number<number[j])
+            if(number[j]>number[j+1])
             {
-                m[i].number=number[i];
-                m[i].sign=j;
+                temp=delMember(number,temp,j);
+                sign=1;
+                break;
             }
         }
+        if(!sign)
+        {
+            temp=delMember(number,temp,j-1);
+        }
     }
+    return temp;
 }
 int main()
 {
@@ -85,5 +94,12 @@ int main()
     {
         printf("%d ",number[i]);
     }
-    return 0;
+    size=getResult(number,dele,size,num);
+    printf("\n");
+    num=0;
+    for(i=0;i<size;i++)
+    {
+        num+=number[i]*pow(10,size-i-1);
+    }
+    printf("%d\n",num);
 }
