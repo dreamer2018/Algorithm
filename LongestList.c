@@ -1,6 +1,6 @@
 /*************************************************************************
 	> File Name: LongestList.c
-	> Author: ZhouPan / github: dreamer2018 
+	> Author: ZhouPan / github: dreamer2018
 	> Mail: zhoupans_mail@163.com
 	> Created Time: Tue 19 Apr 2016 12:25:37 PM CST
   > Function:最长公共子序列
@@ -25,7 +25,6 @@ int countLongestList(char *str,int n)
 {
     int i,j;
     int temp[n];
-    
     for(i=0;i<n;i++)
     {
         temp[i]=1;
