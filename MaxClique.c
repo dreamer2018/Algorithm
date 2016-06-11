@@ -7,7 +7,15 @@
  ************************************************************************/
 
 #include<stdio.h>
+#include<string.h>
+
 #define N 5  //图的顶点个数
+
+
+int bestn=-1;
+int bestx[N];
+int SeqList[N][N];
+
 
 void Init(int SeqList[][N])  //创建邻接矩阵，保存图的信息
 {
@@ -16,7 +24,7 @@ void Init(int SeqList[][N])  //创建邻接矩阵，保存图的信息
     {
         for(j=0;j<N;j++)
         {
-            printf("SeqList[%d][%d]=",i+1,j+1);
+ //           printf("SeqList[%d][%d]=",i+1,j+1);
             scanf("%d",&SeqList[i][j]);
         }
     }
@@ -39,56 +47,42 @@ void Print(int SeqList[][N])
 }
 
 //回溯主函数
-void Backtrack(int i,int bestx[],int x[],int bestn,int cn,int SeqList[][N])
+void Backtrack(int i)
 {
-    if(i>N) //当到达叶子结点
+    if(i>N) //当将所有的访问完后
     {
         int j;
         for(j=0;j<N;j++)
         {
-            bestx[j]=x[j];
+            if(bestx[j])
+            {
+                printf("%d\t",j+1);
+            }
         }
-        bestn=cn;
+        printf("\n");
         return;
     }
-    int OK=1,j;
-    for(j=0;j<i;j++)
+    int ok=0;
+    int j;
+    for(j=0;j<N;j++)
     {
-        if(x[j] && SeqList[i][j] == 0) //如果i,j不相连
+        if(bestx[j] && !SeqList[i][j]) //发现如果他与最大团里面的结点有不连通，就可以断定他一定不是最大团里面的东西
         {
-            OK=0;
-            break;
+            ok=1;
         }
     }
-    if(OK) //进入左子树
+    if(!ok)
     {
-        x[i]=1;
-        cn++;
-        Backtrack(i+1,bestx,x,bestn,cn,SeqList);
-        x[i]=0;
-        cn--;
+        bestn++;
+        bestx[i]=1;
     }
-    if(cn+N-i >= bestn) //进入右子树
-    {
-        x[i]=0;
-        Backtrack(i+1,bestx,x,bestn,cn,SeqList);
-    }
+    Backtrack(i+1);
 }
 
 int main()
 {
-    int SeqList[N][N];
-    int x[N];
-    int bestx[N];
-    int bestn=0;
-    int cn=0;
     Init(SeqList);
     Print(SeqList);
-    Backtrack(0,bestx,x,bestn,cn,SeqList);
-    int i;
-    for(i=0;i<N;i++)
-    {
-        printf("%d\t",x[i]);
-    }
+    Backtrack(0);
     return 0;
 }
