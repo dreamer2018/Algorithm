@@ -40,7 +40,7 @@ def LCS(i,j,x,b):
         LCS(i,j-1,x,b)
 
 if __name__ == '__main__':
-    x = 'about'
-    y = 'static'
+    x = 'aboutt'
+    y = 'statict'
     c,b = LCSLength(len(x),len(y),x,y)
     LCS(len(x),len(y),x,b)
