@@ -3,7 +3,7 @@
 	> Author: ZhouPan / github: dreamer2018
 	> Mail: zhoupans_mail@163.com
 	> Created Time: Wed 01 Jun 2016 08:24:52 AM CST
-    > Function:
+    > Function:矩阵连乘问题
  ************************************************************************/
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 
 #define MAX 100
 
-
+/*
 int matrix_chain(int *p, int n, int **m, int **s)
 {
     //a[][]最小乘次数
@@ -40,10 +40,35 @@ int matrix_chain(int *p, int n, int **m, int **s)
     }
     return m[0][n-1];
 }
-
+*/
+int matrix_chain(int *p,int n,int **m,int **s)
+{
+    int i,j,k,r;
+    for(i=0;i<n;i++)
+    {
+        m[i][i]=1;
+    }
+    for(r=2;r<n;r++)
+    {
+        for(i=0;i<=n-r;i++)
+        {
+            j=i+r-1;
+            m[i][j]=9999;
+            for(k=i;k<=j-1;k++)
+            {
+                int tmp=m[i][k]+m[k+1][j]+p[i]*p[k+1]*p[j+1];
+                if(tmp < m[i][j])
+                {
+                    m[i][j] = tmp;
+                    s[i][j]=k;
+                }
+            }
+        }
+    }
+    return m[0][n-1];
+}
 void print_chain(int i, int j, char **a,int **s)
 {    //递归的方式来把最小乘数的表达式输出
-
     if (i == j)
     {
         printf("%s",a[i]);
